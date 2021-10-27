@@ -16,3 +16,6 @@ GET     /message                                controllers.AsyncController.mess
 GET     /assets/*file                           controllers.Assets.versioned(file)
 
 GET     /taskList                               controllers.TaskListOneController.taskList
+GET     /loginOne                               controllers.TaskListOneController.login
+GET     /validateGetOne                         controllers.TaskListOneController.validateLoginGet(username, password)
+POST    /validatePostOne                        controllers.TaskListOneController.validateLoginPost

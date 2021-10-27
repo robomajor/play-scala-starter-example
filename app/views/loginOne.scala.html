@@ -1,0 +1,17 @@
+@()(implicit assetsFinder: AssetsFinder)
+
+@main("Login") {
+    <h2>Login</h2>
+
+    <form method="get" action="validateGetOne">
+        Username: <input type="text" name="username">
+        Password: <input type="password" name="password">
+        <input type="submit">
+    </form>
+
+    <form method="post" action="@routes.TaskListOneController.validateLoginPost">
+        Username: <input type="text" name="username">
+        Password: <input type="password" name="password">
+        <input type="submit">
+    </form>
+}
