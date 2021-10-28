@@ -2,14 +2,20 @@
 
 @main("Login") {
     <h2>Login</h2>
-
+    Login with GET
     <form method="get" action="validateGetOne">
         Username: <input type="text" name="username">
         Password: <input type="password" name="password">
         <input type="submit">
     </form>
-
+    Login with POST
     <form method="post" action="@routes.TaskListOneController.validateLoginPost">
+        Username: <input type="text" name="username">
+        Password: <input type="password" name="password">
+        <input type="submit">
+    </form>
+    Create user
+    <form method="post" action="@routes.TaskListOneController.createUser">
         Username: <input type="text" name="username">
         Password: <input type="password" name="password">
         <input type="submit">

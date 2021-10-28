@@ -1,8 +1,9 @@
 package controllers
 
+import models.TaskListInMemoryModel
+
 import javax.inject._
 import play.api.mvc._
-import play.api.i18n._
 
 @Singleton
 class TaskListOneController @Inject() (cc: ControllerComponents) (implicit assetsFinder: AssetsFinder) extends AbstractController(cc) {
@@ -20,13 +21,32 @@ class TaskListOneController @Inject() (cc: ControllerComponents) (implicit asset
     postVals.map { args =>
       val username = args("username").head
       val password = args("password").head
-      Redirect(routes.TaskListOneController.taskList)
+      if (TaskListInMemoryModel.validateUser(username, password)) {
+        Redirect(routes.TaskListOneController.taskList).withSession("username" -> username)
+      } else Redirect(routes.TaskListOneController.login)
     }.getOrElse(Redirect(routes.TaskListOneController.login))
   }
 
-  def taskList = Action {
-    val tasks = List("task_1", "task_2", "task_3", "task_4")
+  def createUser = Action { request =>
+    val postVals = request.body.asFormUrlEncoded
+    postVals.map { args =>
+      val username = args("username").head
+      val password = args("password").head
+      if (TaskListInMemoryModel.createUser(username, password)) {
+        Redirect(routes.TaskListOneController.taskList).withSession("username" -> username)
+      } else Redirect(routes.TaskListOneController.login)
+    }.getOrElse(Redirect(routes.TaskListOneController.login))
+  }
 
-    Ok(views.html.taskListOne(tasks))
+  def taskList = Action { request =>
+    val usernameOption = request.session.get("username")
+    usernameOption.map { username =>
+      val tasks = TaskListInMemoryModel.getTasks(username)
+      Ok(views.html.taskListOne(tasks))
+    }.getOrElse(Redirect(routes.TaskListOneController.login))
+  }
+
+  def logout = Action {
+    Redirect(routes.TaskListOneController.login).withNewSession
   }
 }

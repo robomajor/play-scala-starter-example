@@ -18,4 +18,9 @@ GET     /assets/*file                           controllers.Assets.versioned(fil
 GET     /taskList                               controllers.TaskListOneController.taskList
 GET     /loginOne                               controllers.TaskListOneController.login
 GET     /validateGetOne                         controllers.TaskListOneController.validateLoginGet(username, password)
++nocsrf
 POST    /validatePostOne                        controllers.TaskListOneController.validateLoginPost
++nocsrf
+POST    /createUserOne                          controllers.TaskListOneController.createUser
+
+GET     /logoutOne                              controllers.TaskListOneController.logout
