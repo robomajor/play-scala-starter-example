@@ -4,7 +4,7 @@ This is a simple application on which I'm learning how you use Scala with Play. 
 
 ## Running
 
-Run this however you want - you can use "sbt run" or "Run Play 2 App" from IntelliJ IDEA - whatever you choose, it'll be fine
+Run this however you want - you can use "sbt run" or "Run Play 2 App" from IntelliJ IDEA - whatever you choose, it'll be fine.
 
 And then go to <http://localhost:9000> to see the running web application.
 
@@ -14,29 +14,15 @@ And then go to <http://localhost:9000> to see the running web application.
 
   Shows how to handle simple HTTP requests.
 
-- `AsyncController.scala`:
+- `TaskListOneController.scala`:
 
-  Shows how to do asynchronous programming when handling a request.
+  Shows how to do simple login form which might give you access to some resources.
 
-- `CountController.scala`:
+## Models
 
-  Shows how to inject a component into a controller and use the component when
-  handling requests.
+- `TaskListInMemoryModel.scala`:
 
-## Components
-
-- `Module.scala`:
-
-  Shows how to use Guice to bind all the components needed by your application.
-
-- `Counter.scala`:
-
-  An example of a component that contains state, in this case a simple counter.
-
-- `ApplicationTimer.scala`:
-
-  An example of a component that starts when the application starts and stops
-  when the application stops.
+  Model of a very simple task list accessible after logging in.
 
 ## Filters
 
