@@ -18,8 +18,8 @@ class HomeController @Inject()(cc: ControllerComponents) (implicit assetsFinder:
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
-  def index = Action {
-    Ok(views.html.index("Your new application is ready."))
+  def index = Action { implicit request =>
+    Ok(views.html.index("This is start page for test scala project"))
   }
 
   def product(prodType: String, prodNum: Int) = Action {

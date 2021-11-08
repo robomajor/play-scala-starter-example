@@ -7,10 +7,6 @@ GET     /                                       controllers.HomeController.index
 GET     /productArgs                            controllers.HomeController.product(prodType, prodNum: Int)
 GET     /product/:prodType/:prodNum             controllers.HomeController.product(prodType, prodNum: Int)
 GET     /productRE/$prodType<[a-z]{2}\d\d>/:prodNum             controllers.HomeController.product(prodType, prodNum: Int)
-# An example controller showing how to use dependency injection
-GET     /count                                  controllers.CountController.count
-# An example controller showing how to write asynchronous code
-GET     /message                                controllers.AsyncController.message
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                           controllers.Assets.versioned(file)
@@ -18,9 +14,7 @@ GET     /assets/*file                           controllers.Assets.versioned(fil
 GET     /taskList                               controllers.TaskListOneController.taskList
 GET     /loginOne                               controllers.TaskListOneController.login
 GET     /validateGetOne                         controllers.TaskListOneController.validateLoginGet(username, password)
-+nocsrf
 POST    /validatePostOne                        controllers.TaskListOneController.validateLoginPost
-+nocsrf
 POST    /createUserOne                          controllers.TaskListOneController.createUser
 
 GET     /logoutOne                              controllers.TaskListOneController.logout
