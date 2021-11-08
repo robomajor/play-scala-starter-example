@@ -1,18 +1,12 @@
 # play-scala-starter-example
 
-This is a starter application that shows how Play works.  Please see the documentation at <https://www.playframework.com/documentation/latest/Home> for more details.
+This is a simple application on which I'm learning how you use Scala with Play. I'm following tutorial from [Mark Lewis](https://youtu.be/FqMDHsFNlxQ?list=PLLMXbkbDbVt8tBiGc1y69BZdG8at1D7ZF)
 
 ## Running
 
-Run this using [sbt](http://www.scala-sbt.org/).  If you downloaded this project from <http://www.playframework.com/download> then you'll find a prepackaged version of sbt in the project directory:
-
-```bash
-sbt run
-```
+Run this however you want - you can use "sbt run" or "Run Play 2 App" from IntelliJ IDEA - whatever you choose, it'll be fine
 
 And then go to <http://localhost:9000> to see the running web application.
-
-There are several demonstration files available in this template.
 
 ## Controllers
 
