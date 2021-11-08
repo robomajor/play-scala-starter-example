@@ -16,5 +16,7 @@ GET     /loginOne                               controllers.TaskListOneControlle
 GET     /validateGetOne                         controllers.TaskListOneController.validateLoginGet(username, password)
 POST    /validatePostOne                        controllers.TaskListOneController.validateLoginPost
 POST    /createUserOne                          controllers.TaskListOneController.createUser
+POST    /addTaskOne                             controllers.TaskListOneController.addTask
+POST    /deleteTaskOne                          controllers.TaskListOneController.deleteTask
 
 GET     /logoutOne                              controllers.TaskListOneController.logout

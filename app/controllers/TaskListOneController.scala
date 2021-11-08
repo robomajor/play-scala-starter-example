@@ -49,4 +49,28 @@ class TaskListOneController @Inject() (cc: ControllerComponents) (implicit asset
   def logout = Action {
     Redirect(routes.TaskListOneController.login).withNewSession
   }
+
+  def addTask = Action { implicit request =>
+    val usernameOption = request.session.get("username")
+    usernameOption.map { username =>
+      val postVals = request.body.asFormUrlEncoded
+      postVals.map { args =>
+        val task = args("newTask").head
+        TaskListInMemoryModel.addTask(username, task)
+        Redirect(routes.TaskListOneController.taskList)
+      }.getOrElse(Redirect(routes.TaskListOneController.taskList))
+    }.getOrElse(Redirect(routes.TaskListOneController.login))
+  }
+
+  def deleteTask = Action { implicit request =>
+    val usernameOption = request.session.get("username")
+    usernameOption.map { username =>
+      val postVals = request.body.asFormUrlEncoded
+      postVals.map { args =>
+        val index = args("index").head.toInt
+        TaskListInMemoryModel.removeTask(username, index)
+        Redirect(routes.TaskListOneController.taskList)
+      }.getOrElse(Redirect(routes.TaskListOneController.taskList))
+    }.getOrElse(Redirect(routes.TaskListOneController.login))
+  }
 }
