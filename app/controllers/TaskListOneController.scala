@@ -4,12 +4,21 @@ import models.TaskListInMemoryModel
 
 import javax.inject._
 import play.api.mvc._
+import play.api.data._
+import play.api.data.Forms._
+
+case class LoginData(username: String, password: String)
 
 @Singleton
-class TaskListOneController @Inject() (cc: ControllerComponents) (implicit assetsFinder: AssetsFinder) extends AbstractController(cc) {
+class TaskListOneController @Inject() (cc: MessagesControllerComponents) (implicit assetsFinder: AssetsFinder) extends MessagesAbstractController(cc) {
+
+  val loginForm = Form(mapping(
+    "Username" -> text(3, 10),
+    "Password" -> text(4)
+  )(LoginData.apply)(LoginData.unapply))
 
   def login = Action { implicit request =>
-    Ok(views.html.loginOne())
+    Ok(views.html.loginOne(loginForm))
   }
 
   def validateLoginGet(username: String, password: String) = Action {
@@ -25,6 +34,16 @@ class TaskListOneController @Inject() (cc: ControllerComponents) (implicit asset
         Redirect(routes.TaskListOneController.taskList).withSession("username" -> username)
       } else Redirect(routes.TaskListOneController.login).flashing("error" -> "Invalid username/password combination")
     }.getOrElse(Redirect(routes.TaskListOneController.login))
+  }
+
+  def createUserForm = Action { implicit request =>
+    loginForm.bindFromRequest().fold(
+      formWithErrors => BadRequest(views.html.loginOne(formWithErrors)),
+      loginData =>
+        if (TaskListInMemoryModel.createUser(loginData.username, loginData.password)) {
+          Redirect(routes.TaskListOneController.taskList).withSession("username" -> loginData.username)
+        } else Redirect(routes.TaskListOneController.login).flashing("error" -> "User creation failed")
+    )
   }
 
   def createUser = Action { implicit request =>
