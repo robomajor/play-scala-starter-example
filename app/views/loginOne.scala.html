@@ -8,14 +8,19 @@
         Password: <input type="password" name="password">
         <input type="submit">
     </form>
+
+    <br>
+
     Login with POST
     <form method="post" action="@routes.TaskListOneController.validateLoginPost">
         @helper.CSRF.formField
-        Username: <input type="text" name="username">
-        Password: <input type="password" name="password">
+        Username: <input type="text" name="username" id="username-login">
+        Password: <input type="password" name="password" id="password-login">
         <input type="submit">
     </form>
+
     <br>
+
     Create user with Play Form
     @helper.form(action = routes.TaskListOneController.createUserForm) {
         @helper.CSRF.formField
@@ -25,13 +30,14 @@
             <button type="submit">Create</button>
         </div>
     }
+
     <br>
     
     Create user
     <form method="post" action="@routes.TaskListOneController.createUser">
         @helper.CSRF.formField
-        Username: <input type="text" name="username">
-        Password: <input type="password" name="password">
+        Username: <input type="text" name="username" id="username-create">
+        Password: <input type="password" name="password" id="password-create">
         <input type="submit">
     </form>
 }

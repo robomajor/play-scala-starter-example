@@ -9,7 +9,7 @@
             <form method="post" action="@routes.TaskListOneController.deleteTask">
                 @helper.CSRF.formField
                 <input type="hidden" name="index" value="@i">
-                <input type="submit" value="Delete">
+                <input type="submit" value="Delete" id="delete-@i">
             </form>
         }
     </ul>
@@ -17,10 +17,10 @@
     <form method="post" action="@routes.TaskListOneController.addTask">
         @helper.CSRF.formField
         <input type="text" name="newTask">
-        <input type="submit">
+        <input type="submit" id="submit-task">
     </form>
 
     <div>
-        <a href="@routes.TaskListOneController.logout">Logout</a>
+        <a href="@routes.TaskListOneController.logout" id="logout">Logout</a>
     </div>
 }
