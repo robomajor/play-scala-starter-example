@@ -26,4 +26,8 @@ class HomeController @Inject()(cc: ControllerComponents) (implicit assetsFinder:
     Ok(s"Product type is: $prodType, product number is $prodNum")
   }
 
+  def randomNumber = Action {
+    Ok(util.Random.nextInt(100).toString)
+  }
+
 }
