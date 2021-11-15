@@ -26,10 +26,6 @@ And then go to <http://localhost:9000> to see the running web application.
 
 ## Filters
 
-- `Filters.scala`:
-
-  Creates the list of HTTP filters used by your application.
-
 - `ExampleFilter.scala`:
 
   A simple filter that adds a header to every response.
