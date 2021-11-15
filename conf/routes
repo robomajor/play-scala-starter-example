@@ -13,6 +13,7 @@ GET     /randomString/:length                   controllers.HomeController.rando
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                           controllers.Assets.versioned(file)
 
+#routes for version 1.0
 GET     /taskList                               controllers.TaskListOneController.taskList
 GET     /loginOne                               controllers.TaskListOneController.login
 GET     /validateGetOne                         controllers.TaskListOneController.validateLoginGet(username, password)
@@ -21,5 +22,9 @@ POST    /createUserFormOne                      controllers.TaskListOneControlle
 POST    /createUserOne                          controllers.TaskListOneController.createUser
 POST    /addTaskOne                             controllers.TaskListOneController.addTask
 POST    /deleteTaskOne                          controllers.TaskListOneController.deleteTask
-
 GET     /logoutOne                              controllers.TaskListOneController.logout
+
+
+#routes for version 2.0
+GET     /load                                   controllers.TaskListTwoController.load
+GET     /login2                                 controllers.TaskListTwoController.login
