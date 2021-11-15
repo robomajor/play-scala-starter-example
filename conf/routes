@@ -6,20 +6,20 @@
 GET     /                                       controllers.HomeController.index
 GET     /productArgs                            controllers.HomeController.product(prodType, prodNum: Int)
 GET     /product/:prodType/:prodNum             controllers.HomeController.product(prodType, prodNum: Int)
-GET     /productRE/$prodType<[a-z]{2}\d\d>/:prodNum             controllers.HomeController.product(prodType, prodNum: Int)
+GET     /productRE/$prodType<[a-z]{2}\d\d>/:prodNum         controllers.HomeController.product(prodType, prodNum: Int)
 GET     /random                                 controllers.HomeController.randomNumber
 GET     /randomString/:length                   controllers.HomeController.randomString(length: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                           controllers.Assets.versioned(file)
 
-GET     /taskList                               controllers.TaskListOneController.taskList
-GET     /loginOne                               controllers.TaskListOneController.login
-GET     /validateGetOne                         controllers.TaskListOneController.validateLoginGet(username, password)
-POST    /validatePostOne                        controllers.TaskListOneController.validateLoginPost
-POST    /createUserFormOne                      controllers.TaskListOneController.createUserForm
-POST    /createUserOne                          controllers.TaskListOneController.createUser
-POST    /addTaskOne                             controllers.TaskListOneController.addTask
-POST    /deleteTaskOne                          controllers.TaskListOneController.deleteTask
+GET     /taskList                               controllers.TaskListController.taskList
+GET     /loginOne                               controllers.TaskListController.login
+GET     /validateGetOne                         controllers.TaskListController.validateLoginGet(username, password)
+POST    /validatePostOne                        controllers.TaskListController.validateLoginPost
+POST    /createUserFormOne                      controllers.TaskListController.createUserForm
+POST    /createUserOne                          controllers.TaskListController.createUser
+POST    /addTaskOne                             controllers.TaskListController.addTask
+POST    /deleteTaskOne                          controllers.TaskListController.deleteTask
 
-GET     /logoutOne                              controllers.TaskListOneController.logout
+GET     /logoutOne                              controllers.TaskListController.logout
