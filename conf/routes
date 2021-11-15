@@ -8,6 +8,7 @@ GET     /productArgs                            controllers.HomeController.produ
 GET     /product/:prodType/:prodNum             controllers.HomeController.product(prodType, prodNum: Int)
 GET     /productRE/$prodType<[a-z]{2}\d\d>/:prodNum             controllers.HomeController.product(prodType, prodNum: Int)
 GET     /random                                 controllers.HomeController.randomNumber
+GET     /randomString/:length                   controllers.HomeController.randomString(length: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                           controllers.Assets.versioned(file)
