@@ -3,7 +3,7 @@ package controllers
 import org.scalatestplus.play.{HtmlUnitFactory, OneBrowserPerSuite, PlaySpec}
 import org.scalatestplus.play.guice.GuiceOneServerPerSuite
 
-class TaskListOneControllerTest extends PlaySpec with GuiceOneServerPerSuite with OneBrowserPerSuite with HtmlUnitFactory {
+class TaskListControllerTest extends PlaySpec with GuiceOneServerPerSuite with OneBrowserPerSuite with HtmlUnitFactory {
 
   "Task List One Controller" must {
     "login and access functions" in {

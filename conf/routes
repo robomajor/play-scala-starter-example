@@ -6,7 +6,7 @@
 GET     /                                       controllers.HomeController.index
 GET     /productArgs                            controllers.HomeController.product(prodType, prodNum: Int)
 GET     /product/:prodType/:prodNum             controllers.HomeController.product(prodType, prodNum: Int)
-GET     /productRE/$prodType<[a-z]{2}\d\d>/:prodNum             controllers.HomeController.product(prodType, prodNum: Int)
+GET     /productRE/$prodType<[a-z]{2}\d\d>/:prodNum         controllers.HomeController.product(prodType, prodNum: Int)
 GET     /random                                 controllers.HomeController.randomNumber
 GET     /randomString/:length                   controllers.HomeController.randomString(length: Int)
 
