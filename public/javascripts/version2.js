@@ -1,0 +1,1 @@
+$("#contents").load("/login2")

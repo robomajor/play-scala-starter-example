@@ -14,7 +14,7 @@ And then go to <http://localhost:9000> to see the running web application.
 
   Shows how to handle simple HTTP requests.
 
-- `TaskListOneController.scala`:
+- `TaskListController.scala`:
 
   Shows how to do simple login form which might give you access to some resources.
 
@@ -25,10 +25,6 @@ And then go to <http://localhost:9000> to see the running web application.
   Model of a very simple task list accessible after logging in.
 
 ## Filters
-
-- `Filters.scala`:
-
-  Creates the list of HTTP filters used by your application.
 
 - `ExampleFilter.scala`:
 

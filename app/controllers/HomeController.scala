@@ -30,4 +30,7 @@ class HomeController @Inject()(cc: ControllerComponents) (implicit assetsFinder:
     Ok(util.Random.nextInt(100).toString)
   }
 
+  def randomString(length: Int) = Action {
+    Ok(util.Random.nextString(length))
+  }
 }
