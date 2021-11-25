@@ -18,6 +18,10 @@ And then go to <http://localhost:9000> to see the running web application.
 
   Shows how to do simple login form which might give you access to some resources.
 
+- `TaskListTwoController.scala`:
+
+  Little more advanced version of controller for this simple task list. It uses JQuery and AJAX calls
+
 ## Models
 
 - `TaskListInMemoryModel.scala`:

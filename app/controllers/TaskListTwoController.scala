@@ -32,7 +32,8 @@ class TaskListTwoController @Inject() (cc: ControllerComponents) (implicit asset
       val username = args("username").head
       val password = args("password").head
       if (TaskListInMemoryModel.validateUser(username, password)) {
-        Ok(views.html.taskList2(TaskListInMemoryModel.getTasks(username))).withSession("username" -> username, "csrfToken" -> play.filters.csrf.CSRF.getToken.get.value)
+        Ok(views.html.taskList2(TaskListInMemoryModel.getTasks(username)))
+          .withSession("username" -> username, "csrfToken" -> play.filters.csrf.CSRF.getToken.get.value)
       } else Ok(views.html.login2())
     }.getOrElse(Ok(views.html.login2()))
   }
@@ -43,7 +44,8 @@ class TaskListTwoController @Inject() (cc: ControllerComponents) (implicit asset
       val username = args("username").head
       val password = args("password").head
       if (TaskListInMemoryModel.createUser(username, password)) {
-        Ok(views.html.taskList2(TaskListInMemoryModel.getTasks(username))).withSession("username" -> username, "csrfToken" -> play.filters.csrf.CSRF.getToken.get.value)
+        Ok(views.html.taskList2(TaskListInMemoryModel.getTasks(username)))
+          .withSession("username" -> username, "csrfToken" -> play.filters.csrf.CSRF.getToken.get.value)
       } else Ok(views.html.login2())
     }.getOrElse(Ok(views.html.login2()))
   }
