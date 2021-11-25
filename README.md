@@ -14,7 +14,7 @@ And then go to <http://localhost:9000> to see the running web application.
 
   Shows how to handle simple HTTP requests.
 
-- `TaskListController.scala`:
+- `TaskListOneController.scala`:
 
   Shows how to do simple login form which might give you access to some resources.
 

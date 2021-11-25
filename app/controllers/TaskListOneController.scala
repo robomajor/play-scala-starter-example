@@ -10,7 +10,7 @@ import play.api.data.Forms._
 case class LoginData(username: String, password: String)
 
 @Singleton
-class TaskListController @Inject()(cc: MessagesControllerComponents)(implicit assetsFinder: AssetsFinder) extends MessagesAbstractController(cc) {
+class TaskListOneController @Inject()(cc: MessagesControllerComponents)(implicit assetsFinder: AssetsFinder) extends MessagesAbstractController(cc) {
 
   val loginForm = Form(mapping(
     "Username" -> text(3, 10),
