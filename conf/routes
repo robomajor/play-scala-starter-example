@@ -28,3 +28,9 @@ GET     /logoutOne                              controllers.TaskListOneControlle
 #routes for version 2.0
 GET     /load                                   controllers.TaskListTwoController.load
 GET     /login2                                 controllers.TaskListTwoController.login
+GET     /taskList2                              controllers.TaskListTwoController.taskList
+POST    /validate2                              controllers.TaskListTwoController.validate
+POST    /create2                                controllers.TaskListTwoController.createUser
+POST    /deleteTask2                            controllers.TaskListTwoController.delete
+POST    /addTask2                               controllers.TaskListTwoController.addTask
+GET     /logout2                                controllers.TaskListTwoController.logout

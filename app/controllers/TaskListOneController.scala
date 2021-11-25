@@ -10,7 +10,7 @@ import play.api.data.Forms._
 case class LoginData(username: String, password: String)
 
 @Singleton
-class TaskListController @Inject()(cc: MessagesControllerComponents)(implicit assetsFinder: AssetsFinder) extends MessagesAbstractController(cc) {
+class TaskListOneController @Inject()(cc: MessagesControllerComponents)(implicit assetsFinder: AssetsFinder) extends MessagesAbstractController(cc) {
 
   val loginForm = Form(mapping(
     "Username" -> text(3, 10),
@@ -31,9 +31,9 @@ class TaskListController @Inject()(cc: MessagesControllerComponents)(implicit as
       val username = args("username").head
       val password = args("password").head
       if (TaskListInMemoryModel.validateUser(username, password)) {
-        Redirect(routes.TaskListController.taskList).withSession("username" -> username)
-      } else Redirect(routes.TaskListController.login).flashing("error" -> "Invalid username/password combination")
-    }.getOrElse(Redirect(routes.TaskListController.login))
+        Redirect(routes.TaskListOneController.taskList).withSession("username" -> username)
+      } else Redirect(routes.TaskListOneController.login).flashing("error" -> "Invalid username/password combination")
+    }.getOrElse(Redirect(routes.TaskListOneController.login))
   }
 
   def createUserForm = Action { implicit request =>
@@ -41,8 +41,8 @@ class TaskListController @Inject()(cc: MessagesControllerComponents)(implicit as
       formWithErrors => BadRequest(views.html.loginOne(formWithErrors)),
       loginData =>
         if (TaskListInMemoryModel.createUser(loginData.username, loginData.password)) {
-          Redirect(routes.TaskListController.taskList).withSession("username" -> loginData.username)
-        } else Redirect(routes.TaskListController.login).flashing("error" -> "User creation failed")
+          Redirect(routes.TaskListOneController.taskList).withSession("username" -> loginData.username)
+        } else Redirect(routes.TaskListOneController.login).flashing("error" -> "User creation failed")
     )
   }
 
@@ -52,9 +52,9 @@ class TaskListController @Inject()(cc: MessagesControllerComponents)(implicit as
       val username = args("username").head
       val password = args("password").head
       if (TaskListInMemoryModel.createUser(username, password)) {
-        Redirect(routes.TaskListController.taskList).withSession("username" -> username)
-      } else Redirect(routes.TaskListController.login).flashing("error" -> "User creation failed")
-    }.getOrElse(Redirect(routes.TaskListController.login))
+        Redirect(routes.TaskListOneController.taskList).withSession("username" -> username)
+      } else Redirect(routes.TaskListOneController.login).flashing("error" -> "User creation failed")
+    }.getOrElse(Redirect(routes.TaskListOneController.login))
   }
 
   def taskList = Action { implicit request =>
@@ -62,11 +62,11 @@ class TaskListController @Inject()(cc: MessagesControllerComponents)(implicit as
     usernameOption.map { username =>
       val tasks = TaskListInMemoryModel.getTasks(username)
       Ok(views.html.taskListOne(tasks))
-    }.getOrElse(Redirect(routes.TaskListController.login))
+    }.getOrElse(Redirect(routes.TaskListOneController.login))
   }
 
   def logout = Action {
-    Redirect(routes.TaskListController.login).withNewSession
+    Redirect(routes.TaskListOneController.login).withNewSession
   }
 
   def addTask = Action { implicit request =>
@@ -76,9 +76,9 @@ class TaskListController @Inject()(cc: MessagesControllerComponents)(implicit as
       postVals.map { args =>
         val task = args("newTask").head
         TaskListInMemoryModel.addTask(username, task)
-        Redirect(routes.TaskListController.taskList)
-      }.getOrElse(Redirect(routes.TaskListController.taskList))
-    }.getOrElse(Redirect(routes.TaskListController.login))
+        Redirect(routes.TaskListOneController.taskList)
+      }.getOrElse(Redirect(routes.TaskListOneController.taskList))
+    }.getOrElse(Redirect(routes.TaskListOneController.login))
   }
 
   def deleteTask = Action { implicit request =>
@@ -88,8 +88,8 @@ class TaskListController @Inject()(cc: MessagesControllerComponents)(implicit as
       postVals.map { args =>
         val index = args("index").head.toInt
         TaskListInMemoryModel.removeTask(username, index)
-        Redirect(routes.TaskListController.taskList)
-      }.getOrElse(Redirect(routes.TaskListController.taskList))
-    }.getOrElse(Redirect(routes.TaskListController.login))
+        Redirect(routes.TaskListOneController.taskList)
+      }.getOrElse(Redirect(routes.TaskListOneController.taskList))
+    }.getOrElse(Redirect(routes.TaskListOneController.login))
   }
 }
