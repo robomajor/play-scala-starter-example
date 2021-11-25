@@ -1,7 +1,14 @@
-@()(implicit assetsFinder: AssetsFinder, flash: Flash)
+@(startRoute: String)(implicit requestHeader: RequestHeader, assetsFinder: AssetsFinder, flash: Flash)
 
 @main("Task List (Version 2)") {
     <div id="contents"></div>
+
+    <input type="hidden" id="csrfToken" value="@helper.CSRF.getToken.value">
+    <input type="hidden" id="loginRoute" value="@startRoute">
+    <input type="hidden" id="validateRoute" value="@routes.TaskListTwoController.validate">
+    <input type="hidden" id="createRoute" value="@routes.TaskListTwoController.createUser">
+    <input type="hidden" id="deleteRoute" value="@routes.TaskListTwoController.delete">
+    <input type="hidden" id="addRoute" value="@routes.TaskListTwoController.addTask">
 
     <script src="@routes.Assets.versioned("javascripts/version2.js")"></script>
 }
