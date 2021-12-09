@@ -49,4 +49,17 @@ class TaskListThreeController  @Inject() (cc: ControllerComponents) (implicit as
     }.getOrElse(Ok(Json.toJson(false)))
   }
 
+  def delete = Action { implicit request =>
+    val usernameOption = request.session.get("username")
+    usernameOption.map { username =>
+      request.body.asJson.map { body =>
+        Json.fromJson[Int](body) match {
+          case JsSuccess(index, path) =>
+            TaskListInMemoryModel.removeTask(username, index)
+            Ok(Json.toJson(true))
+          case e @ JsError(_) => Redirect(routes.TaskListThreeController.load)
+        }
+      }.getOrElse(Ok(Json.toJson(false)))
+    }.getOrElse(Ok(Json.toJson(false)))
+  }
 }

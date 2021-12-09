@@ -40,3 +40,4 @@ GET     /load3                                  controllers.TaskListThreeControl
 POST    /validate3                              controllers.TaskListThreeController.validate
 GET     /taskList3                              controllers.TaskListThreeController.taskList
 POST    /addTask3                               controllers.TaskListThreeController.addTask
+POST    /deleteTask3                            controllers.TaskListThreeController.delete
