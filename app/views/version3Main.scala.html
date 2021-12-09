@@ -10,7 +10,7 @@
         <br>
         Password: <input type="password" id="loginPass">
         <br>
-        <button onclick="login()">Login</button>
+        <button onclick="login()">Login</button><span id="login-message"></span>
 
         <br>
 
@@ -20,7 +20,7 @@
         <br>
         Password: <input type="password" id="createPass">
         <br>
-        <button onclick="createUser()">Create user</button>
+        <button onclick="createUser()">Create user</button><span id="create-message"></span>
     </div>
 
     <div id="task-section" hidden>
@@ -30,19 +30,20 @@
         </ul>
 
         <input type="text" id="newTask">
-        <button onclick="addTask()">Add task</button>
+        <button onclick="addTask()">Add task</button><span id="task-message"></span>
 
         <div>
-            <a href="@routes.TaskListTwoController.logout" id="logout">Logout</a>
+            <button onclick="logout()">Logout</button>
         </div>
     </div>
 
     <input type="hidden" id="csrfToken" value="@helper.CSRF.getToken.value">
     <input type="hidden" id="validateRoute" value="@routes.TaskListThreeController.validate">
     <input type="hidden" id="tasksRoute" value="@routes.TaskListThreeController.taskList">
-    <input type="hidden" id="createRoute" value="@routes.TaskListTwoController.createUser">
-    <input type="hidden" id="deleteRoute" value="@routes.TaskListTwoController.delete">
+    <input type="hidden" id="createRoute" value="@routes.TaskListThreeController.createUser">
+    <input type="hidden" id="deleteRoute" value="@routes.TaskListThreeController.delete">
     <input type="hidden" id="addRoute" value="@routes.TaskListThreeController.addTask">
+    <input type="hidden" id="logoutRoute" value="@routes.TaskListThreeController.logout">
 
     <script src="@routes.Assets.versioned("javascripts/version3.js")"></script>
 }

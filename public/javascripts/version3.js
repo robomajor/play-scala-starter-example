@@ -6,6 +6,7 @@ const tasksRoute = document.getElementById("tasksRoute").value;
 const createRoute = document.getElementById("createRoute").value;
 const deleteRoute = document.getElementById("deleteRoute").value;
 const addRoute = document.getElementById("addRoute").value;
+const logoutRoute = document.getElementById("logoutRoute").value;
 
 function login() {
     const username = document.getElementById("loginName").value;
@@ -18,11 +19,33 @@ function login() {
         if (data) {
             document.getElementById("login-section").hidden = true;
             document.getElementById("task-section").hidden = false;
+            document.getElementById("login-message").innerHTML = "";
+            document.getElementById("create-message").innerHTML = "";
             loadTasks();
         } else {
-            // TODO
+            document.getElementById("login-message").innerHTML = "Login Failed";
         }
         });
+}
+
+function createUser() {
+    const username = document.getElementById("createName").value;
+    const password = document.getElementById("createPass").value;
+    fetch(createRoute, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Csrf-Token': csrfToken },
+        body: JSON.stringify({ username, password })
+    }).then(res => res.json()).then(data => {
+        if(data) {
+            document.getElementById("login-section").hidden = true;
+            document.getElementById("task-section").hidden = false;
+            document.getElementById("login-message").innerHTML = "";
+            document.getElementById("create-message").innerHTML = "";
+            loadTasks();
+        } else {
+            document.getElementById("create-message").innerHTML = "User Creation Failed";
+        }
+    });
 }
 
 function loadTasks() {
@@ -36,13 +59,14 @@ function loadTasks() {
             li.onclick = e => {
                 fetch(deleteRoute, {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json', 'Csrf-Token': csrfToken},
-                    body: JSON.stringify({ i })
+                    headers: {'Content-Type': 'application/json', 'Csrf-Token': csrfToken },
+                    body: JSON.stringify(i)
                 }).then(res => res.json()).then(data => {
-                    if (data) {
+                    if(data) {
+                        document.getElementById("task-message").innerHTML = "";
                         loadTasks();
                     } else {
-                        // TODO
+                        document.getElementById("task-message").innerHTML = "Failed to delete.";
                     }
                 });
             }
@@ -52,16 +76,25 @@ function loadTasks() {
 }
 
 function addTask() {
-    let task = document.getElementById('newTask').value;
+    let task = document.getElementById("newTask").value;
     fetch(addRoute, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json', 'Csrf-Token': csrfToken},
-        body: JSON.stringify({ task })
+        headers: {'Content-Type': 'application/json', 'Csrf-Token': csrfToken },
+        body: JSON.stringify(task)
     }).then(res => res.json()).then(data => {
-        if (data) {
+        if(data) {
             loadTasks();
+            document.getElementById("newTask").value = "";
+            document.getElementById("task-message").innerHTML = "";
         } else {
-            // TODO
+            document.getElementById("task-message").innerHTML = "Failed to add.";
         }
+    });
+}
+
+function logout() {
+    fetch(logoutRoute).then(res => res.json()).then(tasks => {
+        document.getElementById("login-section").hidden = false;
+        document.getElementById("task-section").hidden = true;
     });
 }
