@@ -19,9 +19,9 @@ class TaskListThreeController  @Inject() (cc: ControllerComponents) (implicit as
     request.body.asJson.map { body =>
       Json.fromJson[A](body) match {
         case JsSuccess(a, path) => f(a)
-        case e@JsError(_) => Redirect(routes.TaskListThreeController.load)
+        case e @ JsError(_) => Redirect(routes.TaskListThreeController.load)
       }
-    }.getOrElse(routes.TaskListThreeController.load)
+    }.getOrElse(Redirect(routes.TaskListThreeController.load))
   }
 
   def withSessionUsername(f: String => Result)(implicit request: Request[AnyContent]) = {
