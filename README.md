@@ -22,6 +22,14 @@ And then go to <http://localhost:9000> to see the running web application.
 
   Little more advanced version of controller for this simple task list. It uses JQuery and AJAX calls
 
+- `TaskListThreeController.scala`:
+
+  Advanced version of controller for this simple task list. It uses JSONs for communication
+
+- `WebSocketChat.scala`:
+
+  Simple chat app that uses WebSockets
+
 ## Models
 
 - `TaskListInMemoryModel.scala`:
