@@ -34,3 +34,12 @@ POST    /create2                                controllers.TaskListTwoControlle
 POST    /deleteTask2                            controllers.TaskListTwoController.delete
 POST    /addTask2                               controllers.TaskListTwoController.addTask
 GET     /logout2                                controllers.TaskListTwoController.logout
+
+#routes for version 3.0
+GET     /load3                                  controllers.TaskListThreeController.load
+POST    /validate3                              controllers.TaskListThreeController.validate
+POST    /create3                                controllers.TaskListThreeController.createUser
+GET     /taskList3                              controllers.TaskListThreeController.taskList
+POST    /addTask3                               controllers.TaskListThreeController.addTask
+POST    /deleteTask3                            controllers.TaskListThreeController.delete
+GET     /logout3                                controllers.TaskListThreeController.logout
