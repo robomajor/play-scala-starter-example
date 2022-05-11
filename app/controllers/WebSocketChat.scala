@@ -11,7 +11,7 @@ import play.api.libs.streams.ActorFlow
 @Singleton
 class WebSocketChat @Inject() (cc: ControllerComponents) (implicit assetsFinder: AssetsFinder, system: ActorSystem, mat: Materializer) extends AbstractController(cc) {
 
-  val manager = system.actorOf(Props[ChatManager], "Manager")
+  val manager = system.actorOf(Props[ChatManager](), "Manager")
 
   def index = Action { implicit request =>
     Ok(views.html.chatPage())
