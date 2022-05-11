@@ -43,3 +43,7 @@ GET     /taskList3                              controllers.TaskListThreeControl
 POST    /addTask3                               controllers.TaskListThreeController.addTask
 POST    /deleteTask3                            controllers.TaskListThreeController.delete
 GET     /logout3                                controllers.TaskListThreeController.logout
+
+# Routes for WebSocket chat-app
+GET     /chat                                   controllers.WebSocketChat.index
+GET     /chatSocket                             controllers.WebSocketChat.socket
